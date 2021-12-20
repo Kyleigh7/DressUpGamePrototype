@@ -1,0 +1,38 @@
+/**
+ * A class for the hit area. Its transparent squares that go over an area of the model or 
+ * an icon so that when you click it, it will cycle throught the array that it corrisponds to.
+ */
+
+class HitArea
+{
+  private float x, y;
+  
+  //constant
+  private final int SIZE = 40; 
+  
+  //constructor
+  public HitArea(float x, float y)
+  {
+    this.x = x;
+    this.y = y;
+  }
+  
+  /**
+   *displays the hit area
+   */
+  public void display()
+  {
+    noStroke();
+    fill(100, 1);
+    rect(x, y, SIZE, SIZE);
+  }
+  
+  /**
+   *checks to see if the mouse is within the boundry a hit area
+   *@return true if intersects; false otherwise
+   */
+  public boolean intersect(float otherX, float otherY)
+  {
+    return (dist(otherX, otherY, x, y) <= SIZE/2);
+  }
+}
