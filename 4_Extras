@@ -1,0 +1,44 @@
+/**
+ * A class for the extra items/things object that will change the extra items/things option
+ * that is being displayed in the extra items/objects array when clicked
+ */
+
+class Extras
+{
+  private float x, y;//for the position of the extras
+  private int w, l;//
+  
+  private int index;//
+  
+  //constant
+  private final PImage [] EXTRASIMG = {loadImage("extras/extras1.png"), loadImage("extras/extras2.png"), loadImage("extras/extras3.png")};
+  
+  //constructor
+  public Extras(float x, float y, int w, int l)
+  {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.l = l;
+  }
+  
+  /**
+   *displays the extras
+   */
+  public void display()
+  {
+    image(EXTRASIMG[index], x, y, w, l);
+  }
+  
+  /**
+   *changes which image is displayed in the extras array, and then back to the first image
+   */
+  void changeImage()
+  {
+    index++;
+    if (index >= EXTRASIMG.length)
+    {
+      index = 0;
+    }
+  }
+}
