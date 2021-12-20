@@ -1,0 +1,263 @@
+/**
+ *Final project for computer science 30S
+ *A dress up style game made with my original art because dress up websites are sketchy
+ *@author Kyleigh Moffatt
+ *@version May 27
+ */
+ 
+PImage eyesIcon;
+PImage modelIcon;
+PImage pantsIcon;
+PImage bootsIcon;
+PImage shirtsIcon;
+PImage hairIcon;
+PImage detailsIcon;
+PImage extrasIcon;
+
+Eyes [] eyes = new Eyes[6];
+Model [] model = new Model[6];
+Pants [] pants = new Pants[2];
+Boots [] boots = new Boots[2];
+Shirts [] shirts = new Shirts[2];
+Hair [] hair = new Hair[4];
+Details [] details = new Details[5];
+Extras [] extras = new Extras[2];
+
+HitArea hit1, hit2, hit3, hit4, hit5, hit6, hit7, hit8;
+
+ 
+void setup()
+{
+  size(600, 600);
+  background (200);
+  
+  //loadImages
+  eyesIcon = loadImage("icons/eyesIcon1.png");
+  modelIcon = loadImage("icons/modelIcon1.png");
+  pantsIcon = loadImage("icons/pantsIcon1.png");
+  bootsIcon = loadImage("icons/bootsIcon1.png");
+  shirtsIcon = loadImage("icons/shirtsIcon1.png");
+  hairIcon = loadImage("icons/hairIcon1.png");
+  detailsIcon = loadImage("icons/detailsIcon1.png");
+  extrasIcon = loadImage("icons/extrasIcon1.png");
+  
+  //initialize the eyes
+  for(int i = 0; i < eyes.length; i++)
+  {
+    eyes[i] = new Eyes(75, 4, 315, 589);
+  }
+  
+  //initialize the modles
+  for(int i = 0; i < model.length; i++)
+  {
+    model[i] = new Model(78, 5, 315, 589);
+  }
+  
+  //initialize the pants
+  for(int i = 0; i < pants.length; i++)
+  {
+    pants[i] = new Pants(75, 5, 315, 589);
+  }
+  
+  //initialize the boots
+  for(int i = 0; i < boots.length; i++)
+  {
+    boots[i] = new Boots(75, 5, 315, 589);
+  }
+  
+  //initialize the shirts
+  for(int i = 0; i < shirts.length; i++)
+  {
+    shirts[i] = new Shirts(75, 5, 315, 589);
+  }
+  
+  //initialize the hair
+  for(int i = 0; i < hair.length; i++)
+  {
+    hair[i] = new Hair(75, 5, 315, 589);
+  }
+  
+  //initialize the details
+  for(int i = 0; i < details.length; i++)
+  {
+    details[i] = new Details(75, 5, 315, 589);
+  }
+  
+  //initialize the extras
+  for(int i = 0; i < extras.length; i++)
+  {
+    extras[i] = new Extras(75, 5, 315, 589);
+  }
+  
+  //initialize the hit areas
+  hit1 = new HitArea (width/7*6+14, height/8*1-50);
+  hit2 = new HitArea (width/7*6+19, height/8*2-68);
+  hit3 = new HitArea (width/7*6+14, height/8*3-56);
+  hit4 = new HitArea (width/7*6+14, height/8*4-60);
+  hit5 = new HitArea (width/7*6+12, height/8*5-60);
+  hit6 = new HitArea (width/7*6+10, height/8*6-57);
+  hit7 = new HitArea (width/7*6+6, height/8*7-57);
+  hit8 = new HitArea (width/7*6+10, height/8*8-63); 
+}
+
+void draw()
+{
+  background (200);
+  
+  //background
+  fill(175);
+  rect(0, 450, width/5*4+20, 150);//ground
+  
+  fill(100);
+  rect(width/5*4-20, 0, width/5*2-20, height);//icon background
+  
+  fill(0);
+  rect(width/5*4-20, 0, 5, height);//icon border
+  
+  fill(255);
+  rect(200, 75, 50, 25);//eye colour
+  
+  
+  //display the eyes
+  for(int i = 0; i < eyes.length; i++)
+  {
+    eyes[i].display();
+  }
+  
+  //display the models
+  for(int i = 0; i < model.length; i++)
+  {
+    model[i].display();
+  }
+  
+  //display the pants
+  for(int i = 0; i < pants.length; i++)
+  {
+    pants[i].display();
+  }
+  
+  //display the boots
+  for(int i = 0; i < boots.length; i++)
+  {
+    boots[i].display();
+  }
+  
+  //display the shirts
+  for(int i = 0; i < shirts.length; i++)
+  {
+    shirts[i].display();
+  }
+  
+  //display the hair
+  for(int i = 0; i < hair.length; i++)
+  {
+    hair[i].display();
+  }
+  
+  //display the details
+  for(int i = 0; i < details.length; i++)
+  {
+    details[i].display();
+  }
+  
+  //display the extras
+  for(int i = 0; i < extras.length; i++)
+  {
+    extras[i].display();
+  }
+  
+  //display icons
+  image(eyesIcon, width/7*6-25, height/8*1-95, 100, 100);
+  image(modelIcon, width/7*6-25, height/8*2-100, 100, 100);
+  image(pantsIcon, width/7*6-25, height/8*3-95, 100, 100);
+  image(bootsIcon, width/7*6-25, height/8*4-95, 100, 100);
+  image(shirtsIcon, width/7*6-25, height/8*5-95, 100, 100);
+  image(hairIcon, width/7*6-25, height/8*6-95, 100, 100);
+  image(detailsIcon, width/7*6-25, height/8*7-95, 100, 100);
+  image(extrasIcon, width/7*6-25, height/8*8-95, 100, 100);
+  
+  //display the hit areas
+  hit1.display();
+  hit2.display(); 
+  hit3.display();
+  hit4.display();
+  hit5.display();
+  hit6.display();
+  hit7.display();
+  hit8.display();
+}
+
+void mousePressed()
+{
+  //changes the eye option that is showing when the hit area that it corrisponds to is pressed
+  for(int i = 0; i < eyes.length; i++)
+  {
+    if(hit1.intersect(mouseX, mouseY))
+    {
+      eyes[i].changeImage();
+    }
+  }
+  
+  //changes the model option that is showing when the hit area that it corrisponds to is pressed
+  for(int i = 0; i < model.length; i++)
+  {
+    if(hit2.intersect(mouseX, mouseY))
+    {
+      model[i].changeImage();
+    }
+  }
+  
+  //changes the pants option that is showing when the hit area that it corrisponds to is pressed
+  for(int i = 0; i < pants.length; i++)
+  {
+    if(hit3.intersect(mouseX, mouseY))
+    {
+      pants[i].changeImage();
+    }
+  }
+  
+  //changes the boots option that is showing when the hit area that it corrisponds to is pressed
+  for(int i = 0; i < boots.length; i++)
+  {
+    if(hit4.intersect(mouseX, mouseY))
+    {
+      boots[i].changeImage();
+    }
+  }
+  
+  //changes the shirts option that is showing when the hit area that it corrisponds to is pressed
+  for(int i = 0; i < shirts.length; i++)
+  {
+    if(hit5.intersect(mouseX, mouseY))
+    {
+      shirts[i].changeImage();
+    }
+  }
+  
+  //changes the hair option that is showing when the hit area that it corrisponds to is pressed
+  for(int i = 0; i < hair.length; i++)
+  {
+    if(hit6.intersect(mouseX, mouseY))
+    {
+      hair[i].changeImage();
+    }
+  }
+  
+  //changes the details option that is showing when the hit area that it corrisponds to is pressed
+  for(int i = 0; i < details.length; i++)
+  {
+    if(hit7.intersect(mouseX, mouseY))
+    {
+      details[i].changeImage();
+    }
+  }
+  
+  //changes the extras option that is showing when the hit area that it corrisponds to is pressed
+  for(int i = 0; i < extras.length; i++)
+  {
+    if(hit8.intersect(mouseX, mouseY))
+    {
+      extras[i].changeImage();
+    }
+  } 
+}
