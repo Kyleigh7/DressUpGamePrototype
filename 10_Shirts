@@ -1,0 +1,44 @@
+/**
+ * A class for the shirts object that will change the shirts option
+ * that is being displayed in the shirts array when clicked
+ */
+
+class Shirts
+{
+  private float x, y;//for the position of the shirts
+  private int w, l;
+  
+  private int index = 0;
+  
+  //constant
+  private final PImage [] SHIRTSIMG = {loadImage("shirts/shirts1.png"), loadImage("shirts/shirts2.png"), loadImage("shirts/shirts3.png")};
+  
+  //constructor
+  public Shirts(float x, float y, int w, int l)
+  {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.l = l;
+  }
+  
+  /**
+   *displays the shirts
+   */
+  public void display()
+  {
+    image(SHIRTSIMG[index], x, y, w, l);
+  }
+  
+  /**
+   *changes which image is displayed in the shirts array, and then back to the first image
+   */
+  void changeImage()
+  {
+    index++;
+    if (index >= SHIRTSIMG.length)
+    {
+      index = 0;
+    }
+  }
+}
